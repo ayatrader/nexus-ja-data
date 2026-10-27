@@ -1,0 +1,26 @@
+# nexus-ja-data
+
+> Local MCP server for Japanese business data: normalizes company names, phone numbers, postal codes, emails, addresses and Japanese-era dates, and deduplicates Japanese customer records (名寄せ). Deterministic rules, no network access, Python standard library only.
+
+## When an AI agent should use this
+- Before comparing or merging Japanese company names: (株), ㈱, 株式会社, half-width katakana (ｶ)), hiragana/katakana variants all refer to the same legal form. Use `ja_same_company` instead of guessing.
+- When cleaning Japanese phone numbers (03(1234)5678, 0312345678, ０９０－…, +81 90-…) or postal codes (〒1500001).
+- When converting Japanese era dates (令和6年4月1日, R6.3.15, 平成31年, 令和元年) to ISO dates. It returns invalid dates unchanged.
+- When deduplicating a Japanese customer list. It reports similar-but-different companies (さくら商事 vs さくら商会) for review and does not merge them.
+
+## Tools (all read-only, idempotent, no network)
+- ja_normalize_value(value, kind) -> normalized, match_key, changed. kind: text|company|person|kana|phone|postal|email|address|date
+- ja_same_company(a, b) -> same, similarity, normalized forms
+- ja_detect_column_types(headers, rows?) -> column -> kind
+- ja_clean_and_dedupe_records(records[], types?, fill_blanks?, report_similar_companies?) -> summary, merged, groups, review, changes.
+
+## Run
+python -m nexus_ja.server   (stdio, JSON-RPC 2.0, MCP protocol 2025-06-18 / 2025-03-26 / 2024-11-05)
+
+## Guarantees
+- Same input, same output. Matches the rules of the 名寄せ赤ペン desktop tool (verified by tests).
+- Empty values never match each other.
+- No data leaves the machine.
+
+## License
+MIT. Free to use, including commercially. A desktop GUI with the same rules (名寄せ赤ペン, for humans) is sold at https://nexus-tools.booth.pm/items/9051166
