@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus-ja-data"
+version = "0.2.0"
+description = "Normalize Japanese company names, phones, addresses, era dates and dedupe records. Local, stdlib."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "NEXUS tools" }]
+keywords = ["mcp", "mcp-server", "japanese", "ai-agents"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Natural Language :: Japanese",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = []
+
+[project.scripts]
+nexus-ja-data = "nexus_ja.server:main"
+
+[project.urls]
+Homepage = "https://github.com/ayatrader/nexus-ja-data"
+Source = "https://github.com/ayatrader/nexus-ja-data"
+
+[tool.setuptools]
+packages = ["nexus_ja"]
