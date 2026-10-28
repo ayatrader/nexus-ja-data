@@ -1,5 +1,7 @@
 # nexus-ja-data
 
+<!-- mcp-name: io.github.ayatrader/nexus-ja-data -->
+
 **A local MCP server that lets AI agents clean Japanese business data with fixed rules instead of guessing.**
 
 - Normalizes Japanese company names ((株) / ㈱ / 株式会社 / half-width kana), phone numbers, postal codes, emails, addresses and era dates (令和6年4月1日, R6.3.15 → 2024-04-01)
