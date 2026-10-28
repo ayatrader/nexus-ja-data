@@ -1,0 +1,2 @@
+[console_scripts]
+nexus-ja-data = nexus_ja.server:main
