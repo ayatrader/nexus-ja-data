@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ayatrader/nexus-ja-data",
+  "title": "Japanese Business Data (名寄せ)",
+  "description": "Normalize Japanese company names, phones, addresses, era dates and dedupe records. Local, stdlib.",
+  "repository": {
+    "url": "https://github.com/ayatrader/nexus-ja-data",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "nexus-ja-data",
+      "version": "0.2.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
